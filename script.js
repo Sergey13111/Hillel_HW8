@@ -17,10 +17,10 @@ console.log(`${day}.${month}.${year}`);
 // 2
 
 const getDiffDays = (dateStart, dateEnd) => {
-    let start = new Date(dateStart);
-    let end = new Date(dateEnd);
+    const start = new Date(dateStart);
+    const end = new Date(dateEnd);
 
-    if ((start || end) == 'Invalid Date') {
+    if (start == 'Invalid Date' || end == 'Invalid Date') {
         console.error('Error: invalid date!!!!!');
         return;
     };
@@ -29,8 +29,9 @@ const getDiffDays = (dateStart, dateEnd) => {
         console.error('Error: your start date is later than end');
         return;
     };
-
-    let diffDays = ((+end) - (+start)) / (1000 * 3600 * 24);
+    
+    const DAYS_IN_MILLISECONDS = 1000 * 3600 * 24;
+    let diffDays = ((+end) - (+start)) / DAYS_IN_MILLISECONDS;
     return diffDays;
 };
 
@@ -41,8 +42,8 @@ console.log(getDiffDays('2021-01-02', '2020-03-15'));
 
 // 3
 const isWeekend = (date) => {
-    let weekend = new Date(date);
-    return (weekend.getDay() === 0 || weekend.getDay() === 6);
+    const day = new Date(date).getDay();
+    return (day === 0 || day === 6);
 };
 
 console.log(isWeekend('2022-02-12'));
